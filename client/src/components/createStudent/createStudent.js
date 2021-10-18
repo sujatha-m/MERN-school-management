@@ -3,10 +3,8 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import axios from 'axios'
-//import useStyles from './styles.js'
 
 export default function CreateStudent () {
-  //const classes = useStyles()
 
   const [student, setStudent] = useState({
     regNo: 0,
@@ -16,7 +14,7 @@ export default function CreateStudent () {
   })
 
   const createStudent = () => {
-    axios.post('http://localhost:5000/students', student).then(() => {
+    axios.post('https://mern-stack-3.herokuapp.com/students', student).then(() => {
       window.location.reload(false)
     })
   }
