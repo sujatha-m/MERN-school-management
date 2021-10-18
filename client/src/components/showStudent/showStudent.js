@@ -7,6 +7,8 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import axios from 'axios'
+import IconButton from '@material-ui/core/IconButton'
+import Delete from '@material-ui/icons/Delete'
 
 export default function ShowStudent () {
   const [studentsList, setStudentList] = useState([])
@@ -28,6 +30,7 @@ export default function ShowStudent () {
               <TableCell align='right'>Registration Number</TableCell>
               <TableCell align='right'>Grade</TableCell>
               <TableCell align='right'>Section</TableCell>
+              <TableCell align='right'>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -42,6 +45,11 @@ export default function ShowStudent () {
                 <TableCell align='right'>{student.regNo}</TableCell>
                 <TableCell align='right'>{student.grade}</TableCell>
                 <TableCell align='right'>{student.section}</TableCell>
+                <TableCell align='right'>
+                  <IconButton aria-label='delete' size='small'>
+                    <Delete fontSize='small' />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
