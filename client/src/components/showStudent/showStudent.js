@@ -13,6 +13,12 @@ import Delete from '@material-ui/icons/Delete'
 export default function ShowStudent () {
   const [studentsList, setStudentList] = useState([])
 
+  const deleteStudent = id => {
+    axios.delete(`http://localhost:5000/students/${id}`).then(() => {
+      window.location.reload(false)
+    })
+  }
+
   useEffect(() => {
     axios.get('http://localhost:5000/students').then(allStudents => {
       setStudentList(allStudents.data)
@@ -46,7 +52,11 @@ export default function ShowStudent () {
                 <TableCell align='right'>{student.grade}</TableCell>
                 <TableCell align='right'>{student.section}</TableCell>
                 <TableCell align='right'>
-                  <IconButton aria-label='delete' size='small'>
+                  <IconButton
+                    aria-label='delete'
+                    size='small'
+                    onClick={() => deleteStudent(student._id)}
+                  >
                     <Delete fontSize='small' />
                   </IconButton>
                 </TableCell>
